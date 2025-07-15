@@ -7,13 +7,13 @@ die() {
 	exit 1
 }
 
-typst_common_dir=(dirname "$0")
+typst_common_dir=$(dirname "$0")
 cd $typst_common_dir
 
 [ -d ".git" ] || die "lib/ is not a git repository"
 
 git fetch origin
-git merge --squash origin/main || die "merge conflicts detected"
+git merge --squash --quiet origin/main || die "merge conflicts detected"
 
 if git diff --cached --quiet; then
 	echo "already up to date"
