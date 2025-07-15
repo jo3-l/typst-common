@@ -10,7 +10,7 @@ die() {
 typst_common_dir=$(dirname "$0")
 cd $typst_common_dir
 
-[ -d ".git" ] || die "lib/ is not a git repository"
+[ -d ".git" ] || die "typst-common/ is not a git repository"
 
 git fetch origin
 git merge --squash --quiet origin/main || die "merge conflicts detected"
