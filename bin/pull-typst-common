@@ -14,4 +14,5 @@ git remote add -f origin https://github.com/jo3-l/typst-common
 git remote set-url --push origin no-push # disable pushing
 git config core.sparseCheckout true
 echo "lib/" >> .git/info/sparse-checkout
+echo "sync" >> .git/info/sparse-checkout
 git pull origin main
