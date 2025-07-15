@@ -1,0 +1,53 @@
+{
+	"name": "typst-helpers",
+	"displayName": "Typst Helpers",
+	"description": "Personal Typst helper extension",
+	"version": "0.0.1",
+	"author": "Joseph Liu",
+	"publisher": "jo3-l",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jo3-l/typst-common"
+	},
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:typst"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "typst-helpers.fixImpliedMultiplication",
+				"title": "Typst Helpers: Fix implied multiplication errors"
+			},
+			{
+				"command": "typst-helpers.exportLectureNotes",
+				"title": "Typst Helpers: Export lecture notes"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "typst-helpers.fixImpliedMultiplication",
+				"key": "Ctrl+M Ctrl+M",
+				"when": "editorTextFocus && resourceLangId == typst"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "pnpm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "16.x",
+		"@types/vscode": "^1.74.0",
+		"@vscode/vsce": "^3.6.0",
+		"typescript": "^4.9.4"
+	},
+	"packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
+}

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ -d "lib" ]; then
+	echo "error: lib directory already exists" >&2
+	exit 1
+fi
+
+mkdir lib
+cd lib
+git init
+git remote add -f origin https://github.com/jo3-l/typst-common
+git remote set-url --push origin no-push # disable pushing
+echo "lib/" >> .git/info/sparse-checkout
+git pull origin main
