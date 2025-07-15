@@ -40,8 +40,22 @@
 #let dx = $dif x$
 #let dy = $dif y$
 #let dt = $dif t$
-#let dv(..args) = {
-  let pos = args.pos()
+#let du = $dif u$
+#let dv = $dif v$
+#let deriv(deg: none, ..sink) = {
+  let args = sink.pos()
+  assert(args.len() in (1, 2))
+  let (y, x) = if args.len() == 1 {
+    (none, args.at(0))
+  } else {
+    (args.at(0), args.at(1))
+  }
+
+  if deg == none {
+    $(dif#y)/(dif #x)$
+  } else {
+    $(dif^#deg#y)/(dif #x^#deg)$
+  }
 }
 
 // arrows
