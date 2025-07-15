@@ -27,7 +27,7 @@
 #let lemma = plainthm.with(variant: "Lemma")
 
 #let problem(n, body) = {
-  block(inset: 1em, fill: gray.lighten(95%), stroke: (left: 2pt + black))[*Problem #n.* #body]
+  block(inset: 1em, below: .75em, fill: gray.lighten(95%), stroke: (left: 2pt + black))[*Problem #n.* #body]
 }
 #let solution(body) = proof("Solution", body)
 
@@ -47,7 +47,7 @@
     set align(right)
     set text(size: 10pt)
     [#course \ Section #leftpad-num(section, width: 3), #term \ Assignment #num]
-    place(line(length: 100%, stroke: 0.75pt + black), dy: 6pt)
+    place(line(length: 100%, stroke: 0.5pt + black), dy: 6pt)
   })
 
   show: proof-env-rules
