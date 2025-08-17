@@ -166,7 +166,7 @@
   // color references to theorems
   show ref: it => {
     if it.element.func() == figure and it.element.kind == "thmbox" {
-      set text(fill: maroon, weight: "semibold")
+      set text(fill: maroon)
       it
     } else {
       it

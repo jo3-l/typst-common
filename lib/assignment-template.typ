@@ -22,6 +22,8 @@
     *#variant A.#{ context thm-counter.get().at(0) }.* _#{ body }_
   ]
 }
+
+// note: these intentionally share the same counter
 #let proposition = plainthm.with(variant: "Proposition")
 #let corollary = plainthm.with(variant: "Corollary")
 #let lemma = plainthm.with(variant: "Lemma")
@@ -29,7 +31,7 @@
 #let problem(n, body) = {
   block(inset: 1em, below: .75em, fill: gray.lighten(95%), stroke: (left: 2pt + black))[*Problem #n.* #body]
 }
-#let solution(body) = proof("Solution", body)
+#let solution(body) = proof("Solution", body) // reuse proof environment
 
 #let assignment(
   num: none,
@@ -56,7 +58,7 @@
   // color references to theorems
   show ref: it => {
     if it.element.func() == figure and it.element.kind == "jliu/plainthm" {
-      set text(fill: maroon, weight: "semibold")
+      set text(fill: maroon)
       it
     } else {
       it
