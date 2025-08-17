@@ -71,18 +71,18 @@
 #let impliedby = $<==$
 #let iff = $<==>$
 
-// miscellaneous
+// operators
 #let cong = $tilde.equiv$
 #let sim = $tilde.op$
 #let to = $arrow$
 #let prod = $product$
+#let pm = $plus.minus$
+
 #let big(it) = math.lr(it, size: 125%)
 #let Big(it) = math.lr(it, size: 150%)
-
-// old habits die hard
-#let ne = $!=$
-#let le = $<=$
-#let ge = $>=$
+#let smallskip = v(3pt)
+#let medskip = v(6pt)
+#let bigskip = v(12pt)
 
 // course-specific
 #let char = $op("char")$
