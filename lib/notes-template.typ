@@ -1,3 +1,4 @@
+#import "@preview/intextual:0.1.0": eqref, flushl, flushr, intertext-rule, tag
 #import "@preview/outrageous:0.4.0" as outrageous
 #import "@preview/marginalia:0.2.0": note as margin-note
 #import "@preview/thmbox:0.2.0": sectioned-counter, thmbox, thmbox-init
@@ -159,6 +160,7 @@
     }
   })
 
+  show: intertext-rule
   show: proof-env-rules
 
   show: thmbox-init()

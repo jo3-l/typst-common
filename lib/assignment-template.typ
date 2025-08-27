@@ -1,3 +1,4 @@
+#import "@preview/intextual:0.1.0": eqref, flushl, flushr, intertext-rule, tag
 #import "base-style.typ": base-style
 #import "proof-env.typ": proof, proof-env-rules, qedhere
 
@@ -52,6 +53,7 @@
     place(line(length: 100%, stroke: 0.5pt + black), dy: 6pt)
   })
 
+  show: intertext-rule
   show: proof-env-rules
   // https://github.com/typst/typst/discussions/1409
   show figure.where(kind: "jliu/plainthm"): set align(left)
