@@ -59,7 +59,15 @@
     below: 1em,
   )
 
-  show link: set text(blue)
+  // color external links blue
+  show link: it => {
+    if type(it.dest) != location {
+      set text(blue)
+      it
+    } else {
+      it
+    }
+  }
 
   // more spacing for various elements
   set math.mat(column-gap: 1em, row-gap: .5em) // https://github.com/typst/typst/issues/3302
@@ -68,7 +76,7 @@
   set list(indent: 1.5em)
   set enum(indent: 1.5em)
 
-  show raw: set text(font: code-font, size: font-size)
+  show raw: set text(font: code-font)
   show: zebraw
 
   show: only-number-labelled-equations.with(ignored-labels: ignored-equation-labels)
