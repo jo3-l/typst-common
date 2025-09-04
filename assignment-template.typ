@@ -1,4 +1,5 @@
-#import "@preview/intextual:0.1.0": eqref, flushl, flushr, intertext-rule, tag
+#import "deps.typ": intextual
+#import intextual: eqref, flushl, flushr, intertext-rule, tag
 #import "base-style.typ": base-style
 #import "proof-env.typ": proof, proof-env-rules, qedhere
 

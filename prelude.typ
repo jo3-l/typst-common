@@ -1,4 +1,8 @@
-#import "@preview/marginalia:0.2.0": note as margin-note
+#import "deps.typ": marginalia, zebraw
+#import marginalia: note as margin-note
+#import zebraw: zebraw as base-zebraw
+
+#let zebraw = base-zebraw.with(lang: false)
 
 #let colored-math(display: true, fill: none, body) = text(fill: fill, if display { [$ #body $] } else { [$#body$] })
 #let mblue = colored-math.with(fill: blue)

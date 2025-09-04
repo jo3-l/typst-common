@@ -1,7 +1,7 @@
-#import "@preview/intextual:0.1.0": eqref, flushl, flushr, intertext-rule, tag
-#import "@preview/outrageous:0.4.0" as outrageous
-#import "@preview/marginalia:0.2.0": note as margin-note
-#import "@preview/thmbox:0.2.0": sectioned-counter, thmbox, thmbox-init
+#import "deps.typ": intextual, marginalia, outrageous, thmbox
+#import intextual: eqref, flushl, flushr, intertext-rule, tag
+#import marginalia: note as margin-note
+#import thmbox: sectioned-counter, thmbox, thmbox-init
 
 #import "base-style.typ": base-style
 #import "proof-env.typ": proof, proof-env-rules, qedhere
