@@ -3,7 +3,7 @@
 #import "@preview/marginalia:0.2.0": note as margin-note
 #import "@preview/thmbox:0.2.0": sectioned-counter, thmbox, thmbox-init
 
-#import "../base-style.typ": base-style
+#import "base-style.typ": base-style
 #import "proof-env.typ": proof, proof-env-rules, qedhere
 
 // inline commentary (eg to motivate a proof)
@@ -74,15 +74,6 @@
     lecture-num.update(num)
   }
 
-  context [
-    #metadata((
-      kind: "start",
-      lec: lecture-num.get().at(0),
-      date: date.display("[month repr:short] [day]"),
-      page: here().page(),
-    )) <lecture-marker>
-  ]
-
   place(line(length: 100% + 5pt, stroke: 1pt + gray.darken(25%)))
   margin-note(numbering: none, dy: -5pt)[
     #set align(center)
@@ -98,7 +89,6 @@
 }
 
 #let end-lecture() = context {
-  [ #metadata((kind: "end", page: here().page())) <lecture-marker> ]
   last-lecture-end-page.update(here().page())
 }
 
