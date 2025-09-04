@@ -89,7 +89,7 @@
         [#text(weight: "semibold")[#name #counter.display()] \ #date.display("[month repr:short] [day padding:none]")],
         kind: "session",
         supplement: none,
-        caption: [#name #counter.display()---#date.display("[weekday] [month repr:short] [day padding:none]")],
+        caption: [#name #counter.display() --- #date.display("[weekday] [month repr:short] [day padding:none]")],
       )
     ]
   }
