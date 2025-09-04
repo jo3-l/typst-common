@@ -135,7 +135,8 @@
 
 #let notes(
   course: none,
-  author: none,
+  author: "Joseph Liu",
+  prof: none,
   term: none,
   doc,
 ) = {
@@ -185,7 +186,7 @@
 
     text(size: 16pt)[#course Course Notes]
     v(4pt)
-    author
+    [Taught by Prof. #prof]
     v(2pt)
     term
   }
