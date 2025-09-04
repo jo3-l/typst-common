@@ -86,10 +86,10 @@
       #set align(center)
       #set text(font: "Noto Sans", size: 10pt, fill: gray.darken(50%))
       #figure(
-        [#text(weight: "semibold")[#name #counter.display()] \ #date-display],
+        [#text(weight: "semibold")[#name #counter.display()] \ #date.display("[month repr:short] [day padding:none]")],
         kind: "session",
         supplement: none,
-        caption: [#name #counter.display()---#date-display],
+        caption: [#name #counter.display()---#date.display("[weekday] [month repr:short] [day padding:none]")],
       )
     ]
   }
