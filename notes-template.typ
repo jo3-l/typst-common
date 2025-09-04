@@ -3,7 +3,7 @@
 #import "@preview/marginalia:0.2.0": note as margin-note
 #import "@preview/thmbox:0.2.0": sectioned-counter, thmbox, thmbox-init
 
-#import "base-style.typ": base-style
+#import "../base-style.typ": base-style
 #import "proof-env.typ": proof, proof-env-rules, qedhere
 
 // inline commentary (eg to motivate a proof)

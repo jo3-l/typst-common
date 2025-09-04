@@ -1,5 +1,0 @@
-#!/bin/bash
-set -e
-
-yes | pnpm exec vsce package
-code --install-extension typst-helpers-$(jq -r '.version' package.json).vsix

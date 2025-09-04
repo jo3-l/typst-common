@@ -1,7 +1,0 @@
-src/**
-**/*.ts
-**/*.map
-tsconfig.json
-node_modules/**
-pnpm-lock.yaml
-LICENSE.md
