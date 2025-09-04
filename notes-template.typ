@@ -89,7 +89,8 @@
         [#text(weight: "semibold")[#name #counter.display()] \ #date.display("[month repr:short] [day padding:none]")],
         kind: "session",
         supplement: none,
-        caption: [#name #counter.display() --- #date.display("[weekday] [month repr:short] [day padding:none]")],
+        caption: [#set text(weight: "semibold")
+          #name #counter.display() --- #date.display("[weekday] [month repr:short] [day padding:none]")],
       )
     ]
   }
@@ -211,7 +212,7 @@
     show outline.entry: set text(size: 10pt)
     show outline.entry: outrageous.show-entry.with(
       prefix-transform: (..) => "", // remove prefix
-      font-weight: ("semibold", auto),
+      font-weight: (auto,),
       fill: (align(right, repeat(gap: 6pt)[.]), auto),
     )
 
