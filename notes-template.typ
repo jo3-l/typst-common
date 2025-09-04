@@ -65,39 +65,52 @@
 #let example = blackbox.with(variant: "Example")
 #let remark = bluebox.with(variant: "Remark", numbering: none)
 
-// lecture tracking
+// lecture/tutorial tracking
 #let lecture-num = counter("jliu/lecture-num")
-#let last-lecture-end-page = state("jliu/last-lecture-end-page", 0)
+#let tutorial-num = counter("jliu/tutorial-num")
+#let last-content-page = state("jliu/last-lecture-end-page", 0)
 
-#let lecture(num: auto, date: none) = {
+// session: either a lecture or a tutorial
+#let session(num: auto, date: none, name: none, counter: none) = {
   if num != auto {
-    lecture-num.update(num)
+    counter.update(num)
   }
 
-  place(line(length: 100% + 5pt, stroke: 1pt + gray.darken(25%)))
-  margin-note(numbering: none, dy: -5pt)[
-    #set align(center)
-    #set text(font: "Noto Sans", size: 10pt, fill: gray.darken(50%))
-    #figure(
-      text(weight: "semibold")[Lecture #context lecture-num.display()],
-      kind: "lecture",
-      supplement: none,
-      caption: date.display("[month repr:short] [day]"),
-    )
-  ]
-  lecture-num.step()
+  context {
+    let date-display = date.display("[month repr:short] [day]")
+
+    [ #metadata([#name #counter.display()]) <session-marker> ]
+    place(line(length: 100% + 5pt, stroke: 1pt + gray.darken(25%)))
+    margin-note(numbering: none, dy: -5pt)[
+      #show figure.caption: (..) => none // hide caption; only used for outline
+      #set align(center)
+      #set text(font: "Noto Sans", size: 10pt, fill: gray.darken(50%))
+      #figure(
+        [#text(weight: "semibold")[#name #counter.display()] \ #date-display],
+        kind: "session",
+        supplement: none,
+        caption: [#name #counter.display()---#date-display],
+      )
+    ]
+  }
+  counter.step()
 }
 
-#let end-lecture() = context {
-  last-lecture-end-page.update(here().page())
-}
+#let lecture = session.with(name: "Lecture", counter: lecture-num)
+#let tutorial = session.with(name: "Tutorial", counter: tutorial-num)
 
-#let query-lecture-at-page(current-page) = {
-  if current-page > last-lecture-end-page.final() {
+#let end-session() = context {
+  last-content-page.update(here().page())
+}
+#let end-lecture = end-session
+#let end-tutorial = end-session
+
+#let query-lecture-or-tutorial-at-page(current-page) = {
+  if current-page > last-content-page.final() {
     return none
   }
 
-  let all-markers = query(figure.where(kind: "lecture"))
+  let all-markers = query(<session-marker>)
   let select-markers-by-page(accept) = {
     all-markers.filter(marker => {
       let marker-page = counter(page).at(marker.location()).first()
@@ -107,15 +120,15 @@
 
   let markers-on-page = select-markers-by-page(page => page == current-page)
   if markers-on-page.len() > 0 {
-    let first-marker-loc = markers-on-page.first().location()
-    if first-marker-loc.position().y < page.height / 3 {
-      return lecture-num.at(first-marker-loc).first()
+    let first-marker = markers-on-page.first()
+    if first-marker.location().position().y < page.height / 3 {
+      return first-marker.value
     }
   }
 
   let markers-before-page = select-markers-by-page(page => page < current-page)
   if markers-before-page.len() > 0 {
-    return lecture-num.at(markers-before-page.last().location()).first()
+    return markers-before-page.last().value
   }
   return none
 }
@@ -140,11 +153,11 @@
       return none
     }
 
-    let lecture = query-lecture-at-page(current-page)
+    let lecture-or-tutorial = query-lecture-or-tutorial-at-page(current-page)
     set align(right)
     set text(size: 10pt)
-    if lecture != none {
-      [#course (#term) \ Lecture #lecture]
+    if lecture-or-tutorial != none {
+      [#course (#term) \ #lecture-or-tutorial]
     } else {
       [#course (#term)]
     }
@@ -193,24 +206,24 @@
 
   // list of lectures
 
-  // associate lecture numbers with marker figures so outline numbers are correct
-  show figure.where(kind: "lecture"): set figure(numbering: (..) => lecture-num.get().first())
   {
+    show outline.entry: set text(size: 10pt)
     show outline.entry: outrageous.show-entry.with(
-      ..outrageous.presets.outrageous-toc,
+      prefix-transform: (..) => "", // remove prefix
       font-weight: ("semibold", auto),
       fill: (align(right, repeat(gap: 6pt)[.]), auto),
     )
 
-    heading(numbering: none, outlined: false)[
-      Lectures
+    heading(numbering: none, outlined: false, depth: 2)[
+      Lectures and Tutorials
     ]
     v(.5em)
-    outline(title: none, target: figure.where(kind: "lecture"))
+    outline(title: none, target: figure.where(kind: "session"))
   }
   pagebreak()
 
   lecture-num.update(1)
+  tutorial-num.update(1)
   context first-content-page.update(here().page())
   doc
 }
