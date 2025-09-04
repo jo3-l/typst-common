@@ -1,5 +1,5 @@
 #import "deps.typ": marginalia, zebraw
-#import zebraw: zebraw
+#import zebraw: zebraw, zebraw-init
 
 #let only-number-labelled-equations(ignored-labels: (), doc) = {
   let equation-labels = state("jliu/equation-labels", ())
@@ -77,7 +77,9 @@
   set enum(indent: 1.5em)
 
   show raw: set text(font: code-font)
-  show: zebraw.with(lang: false)
+
+  show: zebraw-init.with(lang: none, numbering-font-args: (weight: "light"), numbering-separator: true)
+  show: zebraw
 
   show: only-number-labelled-equations.with(ignored-labels: ignored-equation-labels)
 
