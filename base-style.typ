@@ -61,7 +61,7 @@
 
   // color external links blue
   show link: it => {
-    if type(it.dest) != location {
+    if type(it.dest) != location and type(it.dest) != label {
       set text(blue)
       it
     } else {
