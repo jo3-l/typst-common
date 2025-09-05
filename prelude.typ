@@ -37,7 +37,9 @@
 // set operations
 #let notin = $in.not$
 #let cap = $inter$
+#let bigcap = $inter.big$
 #let cup = $union$
+#let bigcup = $union.big$
 #let subseteq = $subset.eq$
 #let supseteq = $supset.eq$
 #let oplus = $plus.circle$
