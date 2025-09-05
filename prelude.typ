@@ -21,7 +21,7 @@
 
 // dots
 #let cdot = $dot.op$
-#let cdots = $dots.c$
+#let cdots = math.class("relation", $dot thin dot thin dot$) // more spaced
 #let vdots = $dots.v$
 #let ddots = $dots.down$
 #let vdotswithin(body) = context {
