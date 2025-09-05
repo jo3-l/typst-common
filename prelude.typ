@@ -14,7 +14,7 @@
 })
 
 #let boxed(display: true, body) = if display {
-  rect($ #body $)
+  rect($std.math.display(body)$)
 } else {
   rect($#body$)
 }
@@ -36,8 +36,8 @@
 
 // set operations
 #let notin = $in.not$
-#let cap = $union$
-#let cup = $inter$
+#let cap = $inter$
+#let cup = $union$
 #let subseteq = $subset.eq$
 #let supseteq = $supset.eq$
 #let oplus = $plus.circle$

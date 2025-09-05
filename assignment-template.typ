@@ -11,7 +11,6 @@
 
 #let indented(body) = pad(left: 2em, top: .5em, bottom: .5em, right: 2em, body)
 
-#let thm-counter = counter("jliu/plain-thm-counter")
 #let plainthm(body, variant: none) = {
   figure(
     caption: none,
@@ -20,12 +19,10 @@
     supplement: variant,
     outlined: false,
   )[
-    #thm-counter.step()
-    *#variant A.#{ context thm-counter.get().at(0) }.* _#{ body }_
+    *#variant #{ context counter(figure.where(kind: "jliu/plainthm")).get().at(0) }.* _#{ body }_
   ]
 }
 
-// note: these intentionally share the same counter
 #let proposition = plainthm.with(variant: "Proposition")
 #let corollary = plainthm.with(variant: "Corollary")
 #let lemma = plainthm.with(variant: "Lemma")
