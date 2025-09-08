@@ -28,7 +28,13 @@
 #let lemma = plainthm.with(variant: "Lemma")
 
 #let problem(n, body) = {
-  block(inset: 1em, below: .75em, fill: gray.lighten(95%), stroke: (left: 2pt + black))[*Problem #n.* #body]
+  block(
+    inset: 1em,
+    below: .75em,
+    fill: gray.lighten(95%),
+    stroke: (left: 2pt + black),
+    width: 100%,
+  )[*Problem #n.* #body]
 }
 #let solution(body) = proof("Solution", body) // reuse proof environment
 
