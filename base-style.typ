@@ -69,6 +69,11 @@
     }
   }
 
+  show figure.caption: it => [
+    #set text(size: 9pt)
+    #smallcaps[#it.supplement #context it.counter.display(it.numbering)]: #it.body
+  ]
+
   // more spacing for various elements
   set math.mat(column-gap: 1em, row-gap: .5em) // https://github.com/typst/typst/issues/3302
   set math.vec(gap: .5em)
