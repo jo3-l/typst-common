@@ -57,6 +57,8 @@
 
 #let greenbox = basebox.with(color: green.darken(50%), fill: green.lighten(95%))
 
+#let yellowbox = basebox.with(color: orange.darken(40%), fill: yellow.lighten(95%))
+
 #let theorem = greenbox.with(variant: "Theorem")
 #let proposition = greenbox.with(variant: "Proposition")
 #let corollary = greenbox.with(variant: "Corollary")
@@ -64,6 +66,7 @@
 #let definition = redbox.with(variant: "Definition")
 #let example = blackbox.with(variant: "Example")
 #let remark = bluebox.with(variant: "Remark", numbering: none)
+#let tip = yellowbox.with(variant: "Tip", numbering: none)
 
 // lecture/tutorial tracking
 #let lecture-num = counter("jliu/lecture-num")
