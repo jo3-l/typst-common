@@ -13,8 +13,9 @@
   [TODO: #note]
 })
 
-#let boxed(display: true, body) = if display {
-  rect($std.math.display(body)$)
+#let boxed(display: true, body) = context if display {
+  // Don't use $ body $; package intextual messes with display equations.
+  rect($std.math.display(body)$, inset: (top: 8pt, bottom: 8pt))
 } else {
   rect($#body$)
 }
