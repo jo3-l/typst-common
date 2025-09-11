@@ -88,7 +88,3 @@
 #let smallskip = v(3pt)
 #let medskip = v(6pt)
 #let bigskip = v(12pt)
-
-// course-specific
-#let char = $op("char")$
-#let adj = $op("adj")$
