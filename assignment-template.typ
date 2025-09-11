@@ -36,7 +36,7 @@
     width: 100%,
   )[*Problem #n.* #body]
 }
-#let solution(body) = proof("Solution", body) // reuse proof environment
+#let solution(body, include-qed: true) = proof("Solution", body, include-qed: include-qed) // reuse proof environment
 
 #let assignment(
   num: none,

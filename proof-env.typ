@@ -17,6 +17,8 @@
     (pos.at(0), pos.at(1))
   }
 
+  let include-qed = args.named().at("include-qed", default: true)
+
   [
     #set text(style: "italic")
     #title.
@@ -24,9 +26,11 @@
   {
     proof-has-qed-stack.update(prev => (..prev, false))
     body
-    context if not proof-has-qed-stack.get().last() {
-      h(1fr)
-      display-qed-symbol()
+    if include-qed {
+      context if not proof-has-qed-stack.get().last() {
+        h(1fr)
+        display-qed-symbol()
+      }
     }
     proof-has-qed-stack.update(prev => prev.slice(0, -1))
   }
