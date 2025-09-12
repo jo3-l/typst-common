@@ -3,8 +3,8 @@
 #import zebraw: zebraw
 
 #let colored-math(display: true, fill: none, body) = text(fill: fill, if display { [$ #body $] } else { [$#body$] })
-#let mblue = colored-math.with(fill: blue)
-#let mred = colored-math.with(fill: red)
+#let mblue = colored-math.with(fill: color.rgb("#0000FB"))
+#let mred = colored-math.with(fill: color.rgb("#FF0800"))
 #let mpurple = colored-math.with(fill: purple)
 
 #let todo(note) = margin-note(numbering: none, block-style: (fill: yellow.lighten(75%), inset: 4pt, stroke: gray), {
