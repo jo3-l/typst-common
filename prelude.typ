@@ -47,7 +47,6 @@
 #let setminus = $without$
 
 // integration and differentiation
-#let int = $integral$
 #let dx = $dif x$
 #let dy = $dif y$
 #let dt = $dif t$
@@ -88,3 +87,4 @@
 #let smallskip = v(3pt)
 #let medskip = v(6pt)
 #let bigskip = v(12pt)
+#let qquad = $quad quad$
