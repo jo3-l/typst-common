@@ -2,6 +2,8 @@
 #import marginalia: note as margin-note
 #import zebraw: zebraw
 
+#let indented(body) = pad(left: 2em, top: .5em, bottom: .5em, right: 2em, body)
+
 #let colored-math(display: true, fill: none, body) = text(fill: fill, if display { [$ #body $] } else { [$#body$] })
 #let mblue = colored-math.with(fill: color.rgb("#0000FB"))
 #let mred = colored-math.with(fill: color.rgb("#FF0800"))

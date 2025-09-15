@@ -9,8 +9,6 @@
   "0" * pad + s
 }
 
-#let indented(body) = pad(left: 2em, top: .5em, bottom: .5em, right: 2em, body)
-
 #let plainthm(body, variant: none) = {
   figure(
     caption: none,
