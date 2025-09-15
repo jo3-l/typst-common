@@ -24,6 +24,11 @@
 // theorem boxes
 #let base-counter = counter("jliu/thm-base-counter")
 
+#let breakable-thmbox(body) = {
+  show figure: set block(breakable: true)
+  body
+}
+
 #let basebox(..args) = {
   // HACK: override font weight of title
   let pos = args.pos()
