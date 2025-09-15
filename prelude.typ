@@ -38,15 +38,15 @@
 }
 
 // set operations
-#let notin = $in.not$
-#let cap = $inter$
-#let bigcap = $inter.big$
-#let cup = $union$
-#let bigcup = $union.big$
-#let subseteq = $subset.eq$
-#let supseteq = $supset.eq$
-#let oplus = $plus.circle$
-#let setminus = $without$
+#let notin = sym.in.not
+#let cap = sym.inter
+#let bigcap = sym.inter.big
+#let cup = sym.union
+#let bigcup = sym.union.big
+#let subseteq = sym.subset.eq
+#let supseteq = sym.supset.eq
+#let oplus = sym.plus.circle
+#let setminus = sym.without
 
 // integration and differentiation
 #let dx = $dif x$
@@ -78,11 +78,11 @@
 #let iff = $<==>$
 
 // operators
-#let cong = $tilde.equiv$
-#let sim = $tilde.op$
-#let to = $arrow$
-#let prod = $product$
-#let pm = $plus.minus$
+#let cong = sym.tilde.equiv
+#let sim = sym.tilde.op
+#let to = sym.arrow
+#let prod = sym.product
+#let pm = sym.plus.minus
 
 #let big(it) = math.lr(it, size: 125%)
 #let Big(it) = math.lr(it, size: 150%)
