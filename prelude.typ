@@ -90,3 +90,17 @@
 #let medskip = v(6pt)
 #let bigskip = v(12pt)
 #let qquad = $quad quad$
+
+// from https://qwinsi.github.io/tex2typst-webapp/impl-in-typst.html
+#let cancelto(to, body) = {
+  let max(a, b) = if a > b { a } else { b }
+  context {
+    let m = measure(body)
+    let (w, h) = (m.width, m.height * 2)
+    let arrow = rotate(-55deg, math.stretch(sym.arrow.r, size: max(h * 1.8, w * 2.0)))
+    set place(center + horizon)
+    body
+    place(dx: -w * 0.5, dy: -h * 0.1, arrow)
+    place(dx: w * 0.3, dy: -h * 1.1, to)
+  }
+}
