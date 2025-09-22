@@ -75,6 +75,18 @@
     }
     it
   }
+  show terms.item: it => {
+    show qedhere: orig => {
+      if not proof-has-qed-stack.at(orig.location()).last() {
+        orig
+        h(1fr)
+        display-qed-symbol()
+      } else {
+        orig
+      }
+    }
+    it
+  }
 
   doc
 }
