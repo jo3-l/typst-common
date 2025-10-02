@@ -44,6 +44,7 @@
 #let solution(body, include-qed: true) = proof("Solution", body, include-qed: include-qed) // reuse proof environment
 
 #let assignment(
+  kind: "Assignment",
   num: none,
   course: none,
   section: none,
@@ -51,14 +52,14 @@
   doc,
 ) = {
   show: base-style.with(
-    title: [#course Assignment #num],
+    title: [#course #kind #num],
     ignored-equation-labels: (qedhere,), // <qedhere> is a dummy label; don't number it
   )
 
   set page(header: {
     set align(right)
     set text(size: 10pt)
-    [#course \ Section #leftpad-num(section, width: 3), #term \ Assignment #num]
+    [#course \ Section #leftpad-num(section, width: 3), #term \ #kind #num]
     place(line(length: 100%, stroke: 0.5pt + black), dy: 6pt)
   })
 
