@@ -69,6 +69,21 @@
     $(dif^#deg#y)/(dif #x^#deg)$
   }
 }
+#let pderiv(deg: none, ..sink) = {
+  let args = sink.pos()
+  assert(args.len() in (1, 2))
+  let (y, x) = if args.len() == 1 {
+    (none, args.at(0))
+  } else {
+    (args.at(0), args.at(1))
+  }
+
+  if deg == none {
+    $(partial#y)/(partial #x)$
+  } else {
+    $(partial^#deg#y)/(partial #x^#deg)$
+  }
+}
 
 // arrows
 #let forward = [($==>$)]
