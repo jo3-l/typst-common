@@ -25,14 +25,21 @@
 #let corollary = plainthm.with(variant: "Corollary")
 #let lemma = plainthm.with(variant: "Lemma")
 
-#let problem(n, body) = {
+#let problem(..args) = {
+  let pos = args.pos()
+  assert(pos.len() in (1, 2))
+  let (problem, body) = if pos.len() == 1 {
+    ([*Problem.*], pos.at(0))
+  } else {
+    ([*Problem #pos.at(0).*], pos.at(1))
+  }
   block(
     inset: 1em,
     below: .75em,
     fill: gray.lighten(95%),
     stroke: (left: 2pt + black),
     width: 100%,
-  )[*Problem #n.* #body]
+  )[#problem #body]
 }
 #let solution(body, include-qed: true) = proof("Solution", body, include-qed: include-qed) // reuse proof environment
 
