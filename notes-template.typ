@@ -14,7 +14,6 @@
 // for midterm content cutoff etc
 #let custom-marker(color: none, body) = {
   place(line(length: 100%, stroke: 1pt + color))
-  divider-line(color: color)
   margin-note(numbering: none, text-style: (font: "Noto Sans", fill: color))[
     #set align(center)
     #body
