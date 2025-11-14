@@ -86,7 +86,16 @@
   context {
     let date-display = date.display("[month repr:short] [day]")
 
-    [ #metadata([#name #counter.display()]) <session-marker> ]
+    [
+      #metadata([#name #counter.display()]) <session-marker>
+      #metadata((
+        action: "start",
+        kind: name,
+        page: here().page(),
+        date: date-display,
+        num: counter.get().at(0),
+      )) <session-meta>
+    ]
     place(line(length: 100% + 5pt, stroke: 1pt + gray.darken(25%)))
     margin-note(numbering: none, dy: -5pt)[
       #show figure.caption: (..) => none // hide caption; only used for outline
@@ -107,11 +116,12 @@
 #let lecture = session.with(name: "Lecture", counter: lecture-num)
 #let tutorial = session.with(name: "Tutorial", counter: tutorial-num)
 
-#let end-session() = context {
+#let end-session(name: none) = context {
+  [ #metadata((action: "end", kind: name, page: here().page())) <session-meta> ]
   last-content-page.update(here().page())
 }
-#let end-lecture = end-session
-#let end-tutorial = end-session
+#let end-lecture = end-session.with(name: "Lecture")
+#let end-tutorial = end-session.with(name: "Tutorial")
 
 #let query-lecture-or-tutorial-at-page(current-page) = {
   if current-page > last-content-page.final() {
