@@ -53,8 +53,7 @@
 #let dy = $dif y$
 #let dt = $dif t$
 #let du = $dif u$
-#let dv = $dif v$
-#let deriv(deg: none, ..sink) = {
+#let dv(deg: none, ..sink) = {
   let args = sink.pos()
   assert(args.len() in (1, 2))
   let (y, x) = if args.len() == 1 {
@@ -69,7 +68,7 @@
     $(dif^#deg#y)/(dif #x^#deg)$
   }
 }
-#let pderiv(deg: none, ..sink) = {
+#let pdv(deg: none, ..sink) = {
   let args = sink.pos()
   assert(args.len() in (1, 2))
   let (y, x) = if args.len() == 1 {
