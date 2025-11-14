@@ -45,7 +45,7 @@
 #let bigcup = sym.union.big
 #let subseteq = sym.subset.eq
 #let supseteq = sym.supset.eq
-#let oplus = sym.plus.circle
+#let oplus = sym.plus.o
 #let setminus = sym.without
 
 // integration and differentiation
@@ -103,4 +103,4 @@
 #let smallskip = v(3pt)
 #let medskip = v(6pt)
 #let bigskip = v(12pt)
-#let qquad = $quad quad$
+#let qquad = $wide$
