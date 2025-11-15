@@ -53,36 +53,47 @@
 #let dy = $dif y$
 #let dt = $dif t$
 #let du = $dif u$
-#let dv(deg: none, ..sink) = {
+
+#let num-regex = regex("^-?\d+$")
+#let dvpdv(deg: none, dsym: none, ..sink) = {
   let args = sink.pos()
-  assert(args.len() in (1, 2))
-  let (y, x) = if args.len() == 1 {
-    (none, args.at(0))
+  assert(args.len() >= 1)
+  let (y, xs) = if args.len() == 1 {
+    (none, (args.at(0),))
   } else {
-    (args.at(0), args.at(1))
+    (args.at(0), args.slice(1))
+  }
+  let resolved-deg = if deg != none {
+    deg
+  } else {
+    let inferred-degree = 0
+    for x in xs {
+      if type(x) == content and x.func() == math.attach and x.has("t") {
+        let exponent = x.t
+        if type(exponent) == content and exponent.has("text") {
+          if (exponent.text.contains(num-regex)) {
+            inferred-degree += int(exponent.text)
+          }
+        } else {
+          assert("could not infer degree; provide one explicitly")
+        }
+      } else {
+        inferred-degree += 1
+      }
+    }
+    inferred-degree
   }
 
-  if deg == none {
-    $(dif#y)/(dif #x)$
+  let xs-display = xs.map(x => $#dsym#x$).join()
+  if resolved-deg == 1 {
+    $(#dsym#y)/#xs-display$
   } else {
-    $(dif^#deg#y)/(dif #x^#deg)$
+    $(#dsym^#resolved-deg#y)/#xs-display$
   }
 }
-#let pdv(deg: none, ..sink) = {
-  let args = sink.pos()
-  assert(args.len() in (1, 2))
-  let (y, x) = if args.len() == 1 {
-    (none, args.at(0))
-  } else {
-    (args.at(0), args.at(1))
-  }
 
-  if deg == none {
-    $(partial#y)/(partial #x)$
-  } else {
-    $(partial^#deg#y)/(partial #x^#deg)$
-  }
-}
+#let dv = dvpdv.with(dsym: math.dif)
+#let pdv = dvpdv.with(dsym: math.partial)
 
 // arrows
 #let forward = [($==>$)]
