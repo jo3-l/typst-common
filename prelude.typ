@@ -95,6 +95,8 @@
 #let dv = dvpdv.with(dsym: math.dif)
 #let pdv = dvpdv.with(dsym: math.partial)
 
+#let evaluated(expr, size: 100%) = $lr(#expr|, size: #size)$
+
 // arrows
 #let forward = [($==>$)]
 #let backward = [($<==$)]
