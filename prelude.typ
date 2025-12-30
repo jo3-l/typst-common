@@ -117,3 +117,7 @@
 #let medskip = v(6pt)
 #let bigskip = v(12pt)
 #let qquad = $wide$
+
+// small matrix
+#let smat = math.mat.with(column-gap: 0% + 0.5em, row-gap: 0% + 0.2em)
+#let svec = math.vec.with(gap: 0% + 0.2em)
