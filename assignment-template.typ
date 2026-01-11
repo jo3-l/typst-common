@@ -59,7 +59,12 @@
   set page(header: {
     set align(right)
     set text(size: 10pt)
-    [#course \ Section #leftpad-num(section, width: 3), #term \ #kind #num]
+    let section-part = if section != none {
+      [Section #leftpad-num(section, width: 3), ]
+    } else {
+      []
+    }
+    [#course \ #section-part#term \ #kind #num]
     place(line(length: 100%, stroke: 0.5pt + black), dy: 6pt)
   })
 
