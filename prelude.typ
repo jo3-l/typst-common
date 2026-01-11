@@ -45,6 +45,7 @@
 #let bigcup = sym.union.big
 #let subseteq = sym.subset.eq
 #let supseteq = sym.supset.eq
+#let subsetneq = sym.subset.neq
 #let oplus = sym.plus.o
 #let setminus = sym.without
 
