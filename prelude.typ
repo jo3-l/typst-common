@@ -50,8 +50,11 @@
 #let setminus = sym.without
 
 // integration and differentiation
+#let int = math.integral
 #let dx = $dif x$
 #let dy = $dif y$
+#let dz = $dif z$
+#let ds = $dif s$
 #let dt = $dif t$
 #let du = $dif u$
 
